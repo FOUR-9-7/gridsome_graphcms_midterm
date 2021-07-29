@@ -6,9 +6,12 @@
             </div>
             <div>
                 <h1> {{ product.name }} </h1>
-                <p > {{ product.description.markdown }} </p>
+                <p > {{ product.description }} </p>
                 <p>
                     ${{ product.price}}
+                </p>
+                <p>
+                    ${{ product.orderItems}}
                 </p>
             </div>
             
@@ -22,9 +25,7 @@ export default {
         return {
             product: {
                 name: '',
-                description: {
-                    markdown: ''
-                },
+                description:'',
                 images: [{
                     url: ''
                 }]
@@ -46,9 +47,7 @@ query GetProduct($id: ID) {
         product(where: {id: $id}) {
                 id
             name
-            description{
-                markdown
-            }
+            description
             price
             images{
                 url

@@ -35,12 +35,7 @@ export default {
     
       products: [{
         name: '',
-        description: {
-          markdown: ''
-        },
-        category: {
-          name: ''
-        },
+        description: '',
         price: '',
         images: [{
           url: ''
@@ -63,12 +58,8 @@ export default {
       products {
         id
         name
-        description{
-          markdown
-        }
-        category{
-          name
-        }
+        description
+        
         price
         images {
           url
