@@ -6,6 +6,9 @@
 
 module.exports = {
   siteName: 'SK8',
+  siteUrl: 'https://FOUR-9-7.github.io',
+  pathPrefix: '/GridsomexGraphcms',
+
   plugins: [
     {
       use: '@gridsome/source-graphql',
