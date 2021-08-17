@@ -7,7 +7,7 @@
 module.exports = {
   siteName: 'Sage IT',
   siteUrl: 'https://FOUR-9-7.github.io',
-  pathPrefix: '/GridsomexGraphcms',
+  pathPrefix: '/gridsome_graphcms_midterm',
 
   plugins: [
     {
