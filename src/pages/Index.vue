@@ -73,6 +73,157 @@ export default {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Mukta', sans-serif;
+  background-color: #FDFAF6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  width: 90%;
+  max-width: 360px;
+}
+ul {
+  list-style: none;
+}
+
+/*----------------*/
+.infos,
+.skills {
+  background-color: #FFF;
+  padding: 1.3rem;
+  position: relative;
+  box-shadow: 0 10px 15px #c4dcccff;
+}
+.infos,
+.infos img,
+.skills {
+  border-radius: 1rem;
+}
+.top-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #7f7f7f;
+  font-size: .9rem;
+}
+.infos .name,
+.infos .location,
+.skills .title,
+.skill .skill-infos h3 {
+  text-transform: uppercase;
+}
+.infos,
+.skill,
+.list-tags {
+  display: flex;
+}
+
+/* Infos */
+.infos {
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.infos img {
+  width: 5rem;
+  margin-right: 1.3rem;
+  box-shadow: 0 0 10px #f0ddd8;
+}
+.infos .name {
+  font-size: 1.2rem;
+}
+.infos .location {
+  font-size: .7rem;
+  word-spacing: .2rem;
+  font-weight: normal;
+}
+.infos .location i {
+  color: #f2d1e1;
+}
+
+/* Skills */
+.skills .title {
+  margin-bottom: 1rem;
+}
+.skill {
+  align-items: center;
+  margin-bottom: .7rem;
+}
+.skill .icon {
+  font-size: 1.5rem;
+  transform: translateY(.3rem);
+}
+.skill.html5 .icon {
+  color: #f64019;
+}
+.skill.css3 .icon {
+  color: #0078c3;
+}
+.skill.js .icon {
+  color: #fcdf36;
+}
+.skill .skill-infos {
+  margin-left: .6rem;
+  flex-grow: 1;
+}
+.skill .skill-infos h3 {
+  transform: scaleY(.85);
+  font-weight: normal;
+}
+.skill .bar {
+  height: .3rem;
+  background-color: #e4e9ef;
+  border-radius: 5px;
+  position: relative;
+}
+.skill .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #6dd594;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px #6dd59455;
+}
+.skill.html5 .progress {width: 70%;}
+.skill.css3 .progress {width: 40%;}
+.skill.js .progress {width: 55%;}
+
+.skills .line {
+  margin: 2.5rem 0;
+  border: none;
+  height: 2px;
+  background-color: #e9edf2;
+}
+
+.list-tags {
+  flex-wrap: wrap;
+}
+.list-tags li {
+  cursor: pointer;
+  background-color: #e4e9ef;
+  padding: .5rem .8rem;
+  border-radius: 20px;
+  margin: 0 .5rem .5rem 0;
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all .2s linear;
+}
+.list-tags li:hover {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+}
+
 .divide__between{
   display: flex;
   justify-content: space-between;

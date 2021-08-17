@@ -13,10 +13,6 @@ export default [
     component: c1
   },
   {
-    path: "/product/ckdu49mfc0h070102jgprxnj0/",
-    component: c1
-  },
-  {
     path: "/product/ckdu4a79c0h0g0158pqypj0dp/",
     component: c1
   },
@@ -30,6 +26,42 @@ export default [
   },
   {
     path: "/product/ckdu4ch1s0h1s01580ksoy6m5/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbabz40viw0c32oaxt1k10/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbghfc0u6j0d41ntx16xk0/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbhzfs0u8y0d411wu6408f/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbkd340ura0b82owjquhw9/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbm54o0vnm0b36xlhqlyxm/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbo7z40w910c32emqlx9bs/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbqq940vvv0b362o1ifqd5/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbtik80wau0b3611l4tdw7/",
+    component: c1
+  },
+  {
+    path: "/product/cksgbw68o0v360d4122rcvkq9/",
     component: c1
   },
   {

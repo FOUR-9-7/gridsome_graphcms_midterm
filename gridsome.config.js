@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'SK8',
+  siteName: 'Sage IT',
   siteUrl: 'https://FOUR-9-7.github.io',
   pathPrefix: '/GridsomexGraphcms',
 
