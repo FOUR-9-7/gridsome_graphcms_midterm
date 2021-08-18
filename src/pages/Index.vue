@@ -1,11 +1,61 @@
 <template>
-  <Layout>
-    <div class="divide__between">
-      <h1>Showcase</h1>
-      <g-link class="button" href="https://app.graphcms.com/ca8fb3ba8d4f4a43813027734f669cda/master/content/771b4175eaa447a59fa0d7194dbf3d2a/view/0af105749d234960b22b83a691a449dc"> Add Products </g-link>
+  <div class="shoppy">
+    <br />
+    <br />
+    <h1 class="text-title">Product</h1>
+
+    <div class="priceRange">
+      <h2>
+        <b-icon icon="sliders"></b-icon>
+        &nbsp;Price range
+      </h2>
+      
+      <div style=" justify-content: space-between;text-align: center">
+     
+
+        <b-button id="show-btn" class="filterPrice-btn" @click="select0_30k()">
+          <ul class="list-tags">
+        <li> 0 - 30,000 Baht</li>
+      </ul>
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+        <b-button id="show-btn" class="filterPrice-btn" @click="select30k_50k()">
+           <ul class="list-tags">
+        <li> 30,001 - 50,000 Baht</li>
+      </ul>
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+        <b-button id="show-btn" class="filterPrice-btn" @click="select50k_70k()">
+           <ul class="list-tags">
+        <li> 50,001 - 70,000 Baht</li>
+      </ul>
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+        <b-button id="show-btn" class="filterPrice-btn" @click="select70k_grt()">
+           <ul class="list-tags">
+        <li>70,000 Baht</li>
+      </ul>
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+      </div>
     </div>
-  <div>
-    <div v-if="$page.gcms.products" class="product-grid">
+    <br />
+    <b-pagination
+      v-model="currentPage"
+      pills
+      :total-rows="rows"
+      :per-page="perPage"
+      align="center"
+      @click.native="selectPage(currentPage)"
+    ></b-pagination>
+
+    <!-- <h1>currentPage: {{ currentPage }}</h1> -->
+
+    <div v-if="this.$page.pageAll.products" class="product-grid text-center">
       <div
         v-for="(product) in products"
         :key="product.id"
@@ -23,43 +73,86 @@
         </g-link>  
       </div>
     </div>
+    </div>
   </div>
-  </Layout>
 </template>
+
 
 <script>
 export default {
-
   data() {
     return {
-    
-      products: [{
-        name: '',
-        description: '',
-        price: '',
-        images: [{
-          url: ''
-        }]
-      }],
+      perPage: 3,
+      currentPage: 1,
+      cartItems: [],
+      x: [],
+      lll: 1,
+      products: [
+        {
+          name: "",
+          description: "",
+          price: "",
+          images: [
+            {
+              url: ""
+            }
+          ],
+          slug: ""
+        }
+      ]
     }
   },
- 
- created(){
-  this.products = this.$page.gcms.products
- },
- 
- 
+  computed: {
+    rows() {
+      return this.$page.pageAll.products.length
+    }
+  },
+  created() {
+    this.products = this.$page.page1.products
+  },
+  methods: {
+    addToCart(itemToAdd) {
+      this.cartItems = JSON.parse(localStorage.getItem("product"))
+      if (this.cartItems == null) {
+        this.cartItems = []
+      }
+      this.cartItems.push(itemToAdd)
+      localStorage.setItem("product", JSON.stringify(this.cartItems))
+      // console.log(this.products)
+
+      // this.cartItems.push(window.localStorage.getItem("product"))
+    },
+    selectPage(page) {
+      if (page == 1) {
+        this.products = this.$page.page1.products
+      }
+      if (page == 2) {
+        this.products = this.$page.page2.products
+      }
+    },
+    select0_30k() {
+      this.products = this.$page.select0_30k.products
+    },
+    select30k_50k() {
+      this.products = this.$page.select30k_50k.products
+    },
+    select50k_70k() {
+      this.products = this.$page.select50k_70k.products
+    },
+    select70k_grt() {
+      this.products = this.$page.select70k_grt.products
+    }
+  }
 }
 </script>
 
 <page-query>
-  {
-    gcms{
+   query {
+    pageAll:gcms {
       products {
         id
         name
         description
-        
         price
         images {
           url
@@ -67,14 +160,94 @@ export default {
         slug
       }
     }
+
+    page1:gcms {
+      products(first: 3,orderBy:price_ASC) {
+        id
+        name
+        description
+        price
+        images {
+          url
+        }
+        slug
+      }
+    }
+
+    page2:gcms {
+      products(skip: 3, first: 3,orderBy:price_ASC) {
+        id
+        name
+        description
+        price
+        images {
+          url
+        }
+        slug
+      }
+    }
+    
+    select0_30k:gcms {
+      products(where: {price_lte: 30000},orderBy:price_ASC) {
+        id
+        name
+        description
+        price
+        images {
+          url
+        }
+        slug
+      }
+    }
+
+    select30k_50k:gcms {
+      products (where:{ AND: [{ price_gt: 30000 }, { price_lte: 50000 }] },orderBy:price_ASC) {
+        id
+        name
+        description
+        price
+        images {
+          url
+        }
+        slug
+      }
+    }
+
+    select50k_70k:gcms {
+      products (where:{ AND: [{ price_gt: 50000 }, { price_lte: 70000 }] },orderBy:price_ASC) {
+        id
+        name
+        description
+        price
+        images {
+          url
+        }
+        slug
+      }
+    }
+
+    select70k_grt:gcms {
+      products (where:{ price_gt: 70000},orderBy:price_ASC) {
+        id
+        name
+        description
+        price
+        images {
+          url
+        }
+        slug
+      }
+    }
+
   }
+
+
 
 </page-query>
 
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;700&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -95,7 +268,6 @@ body {
 ul {
   list-style: none;
 }
-
 /*----------------*/
 .infos,
 .skills {
@@ -128,7 +300,6 @@ ul {
 .list-tags {
   display: flex;
 }
-
 /* Infos */
 .infos {
   align-items: center;
@@ -150,7 +321,6 @@ ul {
 .infos .location i {
   color: #f2d1e1;
 }
-
 /* Skills */
 .skills .title {
   margin-bottom: 1rem;
@@ -198,14 +368,12 @@ ul {
 .skill.html5 .progress {width: 70%;}
 .skill.css3 .progress {width: 40%;}
 .skill.js .progress {width: 55%;}
-
 .skills .line {
   margin: 2.5rem 0;
   border: none;
   height: 2px;
   background-color: #e9edf2;
 }
-
 .list-tags {
   flex-wrap: wrap;
 }
@@ -223,12 +391,10 @@ ul {
 .list-tags li:hover {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
 }
-
 .divide__between{
   display: flex;
   justify-content: space-between;
 }
-
 .button{
     display: flex;
     align-items: center;
@@ -242,7 +408,6 @@ ul {
     margin-bottom: .75rem;
     border-radius: 5px;
 }
-
 .button:hover{
   background: #5828e8;
   color: #f5f5f5;
@@ -282,7 +447,6 @@ ul {
   position: relative;
   background-color: #f5f5f5;
 }
-
 .product-name{
   font-size: 1.125rem;
   color: #101b42;
@@ -297,7 +461,6 @@ ul {
   color: #888;
   font-weight: bold;
 }
-
 @media(max-width: 760px){
   .product-grid{
     justify-content: center;   

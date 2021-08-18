@@ -5,37 +5,37 @@ export default {
   "touchicons": [
     {
       "width": 76,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.f22e9f3.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=76&key=c5a30d3"
     },
     {
       "width": 152,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.62d22cb.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=152&key=c5a30d3"
     },
     {
       "width": 120,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.1539b60.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=120&key=c5a30d3"
     },
     {
       "width": 167,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.dc0cdc5.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=167&key=c5a30d3"
     },
     {
       "width": 180,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.7b22250.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=180&key=c5a30d3"
     }
   ],
   "favicons": [
     {
       "width": 16,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.ce0531f.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=16&key=a281067"
     },
     {
       "width": 32,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.ac8d93a.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=32&key=a281067"
     },
     {
       "width": 96,
-      "src": "/gridsome_graphcms_midterm/assets/static/favicon.b9532cc.9bb7ffafafc09ac851d81afb65b8ef59.png"
+      "src": "/assets/static/src/favicon.png?width=96&key=a281067"
     }
   ]
 }
