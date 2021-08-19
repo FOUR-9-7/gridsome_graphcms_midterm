@@ -5,7 +5,7 @@
             <div>
             <div class="container">
     <div class="infos">
-      <g-image :src="product.images[0].url" class="img" alt="new image" />  
+             <g-image :src="product.images[0].url" class="img" alt="new image" />  
       <div class="">
         <h2 class="name">{{ product.name }}     </h2>
         <h3 class="name">
@@ -97,6 +97,7 @@ query GetProduct($id: ID) {
             images{
                 url
             }
+            
         }
     }
 }

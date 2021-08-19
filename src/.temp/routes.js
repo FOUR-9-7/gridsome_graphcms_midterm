@@ -1,7 +1,9 @@
 const c1 = () => import(/* webpackChunkName: "page--src--templates--product-vue" */ "/home/hong/Videos/asi/gridsome/src/templates/Product.vue")
-const c2 = () => import(/* webpackChunkName: "page--src--pages--about-vue" */ "/home/hong/Videos/asi/gridsome/src/pages/About.vue")
-const c3 = () => import(/* webpackChunkName: "page--node-modules--gridsome--app--pages--404-vue" */ "/home/hong/Videos/asi/gridsome/node_modules/gridsome/app/pages/404.vue")
-const c4 = () => import(/* webpackChunkName: "page--src--pages--index-vue" */ "/home/hong/Videos/asi/gridsome/src/pages/Index.vue")
+const c2 = () => import(/* webpackChunkName: "page--src--pages--gpu-vue" */ "/home/hong/Videos/asi/gridsome/src/pages/GPU.vue")
+const c3 = () => import(/* webpackChunkName: "page--src--pages--cpu-vue" */ "/home/hong/Videos/asi/gridsome/src/pages/CPU.vue")
+const c4 = () => import(/* webpackChunkName: "page--src--pages--about-vue" */ "/home/hong/Videos/asi/gridsome/src/pages/About.vue")
+const c5 = () => import(/* webpackChunkName: "page--node-modules--gridsome--app--pages--404-vue" */ "/home/hong/Videos/asi/gridsome/node_modules/gridsome/app/pages/404.vue")
+const c6 = () => import(/* webpackChunkName: "page--src--pages--index-vue" */ "/home/hong/Videos/asi/gridsome/src/pages/Index.vue")
 
 export default [
   {
@@ -65,22 +67,30 @@ export default [
     component: c1
   },
   {
-    path: "/about/",
+    path: "/gpu/",
     component: c2
+  },
+  {
+    path: "/cpu/",
+    component: c3
+  },
+  {
+    path: "/about/",
+    component: c4
   },
   {
     name: "404",
     path: "/404/",
-    component: c3
+    component: c5
   },
   {
     name: "home",
     path: "/",
-    component: c4
+    component: c6
   },
   {
     name: "*",
     path: "*",
-    component: c3
+    component: c5
   }
 ]

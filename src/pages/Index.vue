@@ -1,50 +1,49 @@
 <template>
-  <div class="shoppy">
-    <br />
-    <br />
-    <h1 class="text-title">Product</h1>
 
-    <div class="priceRange">
+  <div class="shoppy">
+  <div class="topnav" id="myTopnav">
+  <a href="#home" class="active"><h1> Sage IT </h1></a>
+  <a @click="select0_30k()"><h1> CPU</h1></a>
+  <a @click="select50k_70k()"><h1> GPU</h1></a>
+  <input type="text" placeholder="Search..">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+<img src="https://www.img.in.th/images/c325efa1408eaefc961a5b141c131725.png" alt="Paris" class="center">
+
+   
+      
+      <div style=" justify-content: space-between;text-align: center">
+      <div class="pagination">
+       <h2>
+        <b-icon icon="sliders"></b-icon>
+        &nbsp;Pagination
+      </h2>
+  <a href="#">&laquo;</a>
+  <a @click="select0_30k()">1</a>
+  <a @click="select30k_50k()">2</a>
+  <a @click="select50k_70k()">3</a>
+  <a href="#">&raquo;</a>
+</div>
+ <div class="priceRange">
       <h2>
         <b-icon icon="sliders"></b-icon>
         &nbsp;Price range
       </h2>
-      
-      <div style=" justify-content: space-between;text-align: center">
-     
+      <ul class="list-tags">
 
-        <b-button id="show-btn" class="filterPrice-btn" @click="select0_30k()">
-          <ul class="list-tags">
-        <li> 0 - 30,000 Baht</li>
+        <li @click="select0_30k()" > 0 - 30,000 Baht</li>
+        <li @click="select30k_50k()">30,001 - 50,000 Baht</li>
+        <li @click="select50k_70k()">50,001 - 70,000 Baht </li>
+        <li @click="select70k_grt()">70,000 Baht</li>
       </ul>
-          <b-icon icon="cart"></b-icon>
-        </b-button>
-        &nbsp;&nbsp;&nbsp;
-        <b-button id="show-btn" class="filterPrice-btn" @click="select30k_50k()">
-           <ul class="list-tags">
-        <li> 30,001 - 50,000 Baht</li>
-      </ul>
-          <b-icon icon="cart"></b-icon>
-        </b-button>
-        &nbsp;&nbsp;&nbsp;
-        <b-button id="show-btn" class="filterPrice-btn" @click="select50k_70k()">
-           <ul class="list-tags">
-        <li> 50,001 - 70,000 Baht</li>
-      </ul>
-          <b-icon icon="cart"></b-icon>
-        </b-button>
-        &nbsp;&nbsp;&nbsp;
-        <b-button id="show-btn" class="filterPrice-btn" @click="select70k_grt()">
-           <ul class="list-tags">
-        <li>70,000 Baht</li>
-      </ul>
-          <b-icon icon="cart"></b-icon>
-        </b-button>
-        &nbsp;&nbsp;&nbsp;
       </div>
     </div>
+    
     <br />
-    <b-pagination
+   <b-pagination
       v-model="currentPage"
       pills
       :total-rows="rows"
@@ -52,26 +51,56 @@
       align="center"
       @click.native="selectPage(currentPage)"
     ></b-pagination>
+    
 
     <!-- <h1>currentPage: {{ currentPage }}</h1> -->
 
+<div class="pagination">
     <div v-if="this.$page.pageAll.products" class="product-grid text-center">
       <div
         v-for="(product) in products"
         :key="product.id"
         class="flex-col"
       >
-        <g-link :to="'product/' + product.id" class="link" >
-        <div class="product-wrapper">
-          <g-image v-for="(images, slug) in product.images" class="img" :key="slug" :src="images.url" />   
-           <div class="product-content">
-          <p class="product-name"> {{ product.name }}</p>
-          <p class="product-price">  &#x20A6;{{ product.price * 10 }}</p>
-        </div>    
+       <g-link :to="'product/' + product.id" class="link" >
+       <div class="skills">
+             <g-image :src="product.images[0].url" class="img" alt="new image" />  
+
+      <h3 class="title">{{ product.name }}</h3>
+          <hr class="line">
+      <ul class="list-tags">
+        <li>RTX 3070</li>
+        <li>ASUS</li>
+        <li>graphic card </li>
+        <li>GPU</li>
+        <li>+2</li>
+      </ul>
+      <i class="fas fa-plus top-icon"></i>
+      <div class="list-skills">
+        <div class="skill html5"><!-- Skill Html5 -->
+          <i class="fab fa-html5 icon"></i>
+          <div class="skill-infos">
+            <h2>Price</h2>
+              <h3 class="name">
+          <i class="fa fa-map-marker"></i>
+          {{ product.price }} Bath
+        </h3>
+            <div class="bar">
+              <div class="progress"></div>
+            </div>
+          </div>
         </div>
-       
-        </g-link>  
+     
+    
       </div>
+  
+    </div>
+    </g-link>  
+
+      
+        
+      </div>
+    </div>
     </div>
     </div>
   </div>
@@ -82,7 +111,7 @@
 export default {
   data() {
     return {
-      perPage: 3,
+      perPage: 8,
       currentPage: 1,
       cartItems: [],
       x: [],
@@ -162,7 +191,7 @@ export default {
     }
 
     page1:gcms {
-      products(first: 3,orderBy:price_ASC) {
+      products(first: 8,orderBy:price_ASC) {
         id
         name
         description
@@ -175,7 +204,7 @@ export default {
     }
 
     page2:gcms {
-      products(skip: 3, first: 3,orderBy:price_ASC) {
+      products(skip: 8, first: 8,orderBy:price_ASC) {
         id
         name
         description
@@ -247,20 +276,112 @@ export default {
 
 
 <style scoped>
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 body {
   font-family: 'Mukta', sans-serif;
-  background-color: #FDFAF6;
+  background-color: #coral;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
 .container {
   width: 90%;
   max-width: 360px;
@@ -274,7 +395,8 @@ ul {
   background-color: #FFF;
   padding: 1.3rem;
   position: relative;
-  box-shadow: 0 10px 15px #c4dcccff;
+  box-shadow: 0 10px 10px #C1CFC0;
+  justify-content: space-around;
 }
 .infos,
 .infos img,
@@ -376,6 +498,7 @@ ul {
 }
 .list-tags {
   flex-wrap: wrap;
+  justify-content: center;
 }
 .list-tags li {
   cursor: pointer;
@@ -387,6 +510,7 @@ ul {
   font-weight: 500;
   letter-spacing: 0.5px;
   transition: all .2s linear;
+  justify-content: center;
 }
 .list-tags li:hover {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
