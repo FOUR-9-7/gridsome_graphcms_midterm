@@ -21,10 +21,6 @@ export default [
     component: c1
   },
   {
-    path: "/product/ckdu4bmyg0h1f0102jk0mwn2g/",
-    component: c1
-  },
-  {
     path: "/product/ckdu4ch1s0h1s01580ksoy6m5/",
     component: c1
   },
